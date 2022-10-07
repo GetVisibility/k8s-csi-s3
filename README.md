@@ -1,3 +1,14 @@
+# Getvisibility
+
+We have made some changes to this repo in order to avoid fetching
+binaries, docker images etc from remote places or from yandex repos. For
+example the docker CSI images are downloaded from the official k8s repos instead
+of from yandex repos. We are publishing our own special versions 
+for the artifacts "5.x.x"
+
+The Geesefs binary is bundled inside the binaries directory but it is also
+built by us, just download the Geesefs project and execute "make build" 
+
 # CSI for S3
 
 This is a Container Storage Interface ([CSI](https://github.com/container-storage-interface/spec/blob/master/spec.md)) for S3 (or S3 compatible) storage. This can dynamically allocate buckets and mount them via a fuse mount into any container.
