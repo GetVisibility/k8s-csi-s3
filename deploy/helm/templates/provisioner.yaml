@@ -80,6 +80,10 @@ spec:
         {{- with .Values.tolerations.controller }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
+      {{- if .Values.images.pullSecret }}
+      imagePullSecrets:
+        - name: {{ .Values.images.pullSecret }}
+      {{- end }}
       containers:
         - name: csi-provisioner
           image: {{ .Values.images.provisioner }}
