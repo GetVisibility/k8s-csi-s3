@@ -67,6 +67,10 @@ spec:
         {{- end }}
       serviceAccount: csi-s3
       hostNetwork: true
+      {{- if .Values.images.pullSecret }}
+      imagePullSecrets:
+        - name: {{ .Values.images.pullSecret }}
+      {{- end }}
       containers:
         - name: driver-registrar
           image: {{ .Values.images.registrar }}

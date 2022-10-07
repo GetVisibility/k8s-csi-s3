@@ -8,6 +8,8 @@ images:
   provisioner: cr.yandex/crp9ftr22d26age3hulg/yandex-cloud/csi-s3/csi-provisioner:v2.1.0
   # Main image
   csi: cr.yandex/crp9ftr22d26age3hulg/yandex-cloud/csi-s3/csi-s3-driver:0.31.8
+  # Secret with credentials to access private docker registry
+  #  pullSecret: "gv-docker-registry"
 
 storageClass:
   # Specifies whether the storage class should be created
