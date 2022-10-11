@@ -67,6 +67,9 @@ spec:
         {{- end }}
       serviceAccount: csi-s3
       hostNetwork: true
+      # GetVisibility: This is needed for the DNS resolution to work
+      # Without this the /etc/resolv.conf file doesn't point to the k8s kube-dns DNS server
+      dnsPolicy: ClusterFirstWithHostNet
       {{- if .Values.images.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.images.pullSecret }}

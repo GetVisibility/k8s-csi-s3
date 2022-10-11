@@ -9,6 +9,10 @@ for the artifacts "5.x.x"
 The Geesefs binary is bundled inside the binaries directory but it is also
 built by us, just download the Geesefs project and execute "make build" 
 
+There is a small modification on controllerserver.go that allows us
+to mount the same bucket on every container. Without this patch every
+container mounts a different bucket with a path generated from the volume ID.
+
 # CSI for S3
 
 This is a Container Storage Interface ([CSI](https://github.com/container-storage-interface/spec/blob/master/spec.md)) for S3 (or S3 compatible) storage. This can dynamically allocate buckets and mount them via a fuse mount into any container.

@@ -51,6 +51,9 @@ func (cs *controllerServer) CreateVolume(ctx context.Context, req *csi.CreateVol
 		bucketName = params[mounter.BucketKey]
 		prefix = volumeID
 		volumeID = path.Join(bucketName, prefix)
+		// GetVisibility: We only want to share one bucket
+		// for all the pods
+		volumeID = bucketName
 	}
 
 	if err := cs.Driver.ValidateControllerServiceRequest(csi.ControllerServiceCapability_RPC_CREATE_DELETE_VOLUME); err != nil {
