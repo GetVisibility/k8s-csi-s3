@@ -7,7 +7,7 @@ images:
   # Source: quay.io/k8scsi/csi-provisioner:v2.1.0
   provisioner: cr.yandex/crp9ftr22d26age3hulg/yandex-cloud/csi-s3/csi-provisioner:v2.1.0
   # Main image
-  csi: images.master.k3s.getvisibility.com/csi-s3:5.31.11
+  csi: images.master.k3s.getvisibility.com/csi-s3:5.31.12
   # Secret with credentials to access private docker registry
   pullSecret: "gv-docker-registry"
 

@@ -64,11 +64,21 @@ func NewClient(cfg *Config) (*s3Client, error) {
 }
 
 func NewClientFromSecret(secret map[string]string) (*s3Client, error) {
+
+    var endpoint string
+    if _, found := secret["endpoint"]; found {
+        endpoint = secret["endpoint"]
+    } else {
+        // Hardcoded minio URL because we can't currently introduce an additional endpoint parameter
+        // inside the existing secret
+        endpoint = "http://gv-essentials-minio:9000"
+    }
+
 	return NewClient(&Config{
-		AccessKeyID:     secret["accessKeyID"],
-		SecretAccessKey: secret["secretAccessKey"],
+		AccessKeyID:     secret["rootUser"],
+		SecretAccessKey: secret["rootPassword"],
 		Region:          secret["region"],
-		Endpoint:        secret["endpoint"],
+		Endpoint:        endpoint,
 		// Mounter is set in the volume preferences, not secrets
 		Mounter: "",
 	})
